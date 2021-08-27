@@ -31,19 +31,19 @@ class Request
 
     public function getHttpClient($options = [])
     {
-        if ($this->httpClient === null) {
-            $this->httpClient = new Client($options);
-        }
+        $this->httpClient = new Client($options);
         return $this->httpClient;
     }
 
     public function request($method, $http, $url, $formParams = null, $query = null)
     {
         $params = [];
-        $headsers = [
+        $headers = [
             'Authorization' => 'Zoho-oauthtoken '. Auth::getAccessToken(),
             'Content-Type' => 'application/x-www-form-urlencoded;charset=UTF-8'
         ];
+        $params['headers'] = $headers;
+
         if (!is_null($query)) {
             $params['query'] = $query;
         }
