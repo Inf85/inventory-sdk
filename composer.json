@@ -14,20 +14,20 @@
             "InventorySDK\\": "src/"
         }
     },
-    
+
     "require": {
-
         "illuminate/support": ">=5.0.0",
         "doctrine/dbal": "*",
-        "guzzlehttp/guzzle": "*",
+        "guzzlehttp/guzzle": "*"
 
     },
-    "require-dev": {
-        "illuminate/support": ">=5.0.0",
-        "doctrine/dbal": "*",
-        "guzzlehttp/guzzle": "*",
 
+    "scripts": {
+        "post-package-install": [
+            "php artisan vendor:publish --tag=advertisement-config --force"
+        ]
     },
+
 
     "prefer-stable": true
 
