@@ -1,0 +1,34 @@
+{
+    "name": "crmoz/inventory-sdk",
+    "type": "library",
+    "version": "1.0",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mikhail"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "InventorySDK\\": "src/"
+        }
+    },
+    
+    "require": {
+
+        "illuminate/support": ">=5.0.0",
+        "doctrine/dbal": "*",
+        "guzzlehttp/guzzle": "*",
+
+    },
+    "require-dev": {
+        "illuminate/support": ">=5.0.0",
+        "doctrine/dbal": "*",
+        "guzzlehttp/guzzle": "*",
+
+    },
+
+    "prefer-stable": true
+
+}
