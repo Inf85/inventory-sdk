@@ -27,7 +27,14 @@
             "php artisan vendor:publish --tag=advertisement-config --force"
         ]
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "InventorySDK\\ServiceProvider"
+            ]
 
+        }
+    },
 
     "prefer-stable": true
 
