@@ -50,7 +50,7 @@ class ZohoInventoryApi
     public function __construct()
     {
         $this->httpClient = HttpRequest::getInstance()->getHttpClient([
-            'base_uri' => 'https://inventory.zoho.com/api/v1/',
+            'base_uri' => config('zoho-inventory.app.base_uri'),
         ]);
 
     }
