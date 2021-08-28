@@ -102,8 +102,7 @@ class Contacts extends Request
 
             $formParams = ['JSONString' => $jsonData];
 
-            $response = $this->createBodyRequest($this->http, $this->module, $formParams, $query);
-
+            $response = $this->request('post', $this->http, $this->module, $formParams, $query);
             $data = json_decode($response, true);
             $data['contact']['response_code'] = $data['code'];
 
