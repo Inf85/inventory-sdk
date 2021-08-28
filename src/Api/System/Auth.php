@@ -34,7 +34,7 @@ class Auth
         ];
 
         $client = new Client();
-        $response = $client->request('POST', 'https://accounts.zoho.'.config('zoho-inventory.app.zoho_domain').'/oauth/v2/token', ['query' => $query]);
+        $response = $client->request('POST', 'https://accounts.zoho.'.config('zoho-inventory.app.zoho_domain', 'com').'/oauth/v2/token', ['query' => $query]);
         $parsed = json_decode($response->getBody()->getContents(), JSON_OBJECT_AS_ARRAY);
         if ($response->getStatusCode() !== 200 || !isset($parsed['access_token'])) {
            Log::info('Invalid response on token refresh request. Response: ' . print_r($parsed, true));
