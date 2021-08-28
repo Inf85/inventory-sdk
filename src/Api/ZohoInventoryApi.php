@@ -50,7 +50,7 @@ class ZohoInventoryApi
     public function __construct()
     {
         $this->httpClient = HttpRequest::getInstance()->getHttpClient([
-            'base_uri' => config('zoho-inventory.app.base_uri'),
+            'base_uri' => 'https://inventory.zoho.' . config('zoho-inventory.app.zoho_domain') . '/api/v1/',
         ]);
 
     }
@@ -66,7 +66,8 @@ class ZohoInventoryApi
     /**
      * @return ItemsGroup
      */
-    public function itemGroup(){
+    public function itemGroup()
+    {
         return new ItemsGroup($this->httpClient);
     }
 
@@ -146,14 +147,16 @@ class ZohoInventoryApi
     /**
      * @return VendorPayments
      */
-    public function vendorPayment(){
+    public function vendorPayment()
+    {
         return new VendorPayments($this->httpClient);
     }
 
     /**
      * @return SalesReturns
      */
-    public function salesReturns(){
+    public function salesReturns()
+    {
         return new SalesReturns($this->httpClient);
     }
 }
