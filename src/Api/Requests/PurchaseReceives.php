@@ -71,7 +71,7 @@ class PurchaseReceives extends Request
     {
         if (!empty($options) && $purchaseReceiveId) {
 
-            $config = $this->http->getConfig('query');
+            $config = $this->http->getConfig('query') ?? [];
 
             // Ignore auto sales order number generation for this Purchase order [bool]
             $query = $config + [

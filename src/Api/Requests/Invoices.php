@@ -93,7 +93,7 @@ class Invoices extends Request
     {
         if (!empty($options)) {
 
-            $config = $this->http->getConfig('query');
+            $config = $this->http->getConfig('query') ?? [];
 
             $query = $config + [
                     // Ignore auto sales order number generation for this sales order [bool]
@@ -155,7 +155,7 @@ class Invoices extends Request
     {
         if (!empty($options) && $invoiceId) {
 
-            $config = $this->http->getConfig('query');
+            $config = $this->http->getConfig('query') ?? [];
 
             // Ignore auto sales order number generation for this sales order [bool]
             $query = $config + ['ignore_auto_number_generation' => 'true'];

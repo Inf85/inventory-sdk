@@ -47,7 +47,7 @@ class ShipmentOrders extends Request
     {
         if (!empty($options)) {
 
-            $config = $this->http->getConfig('query');
+            $config = $this->http->getConfig('query') ?? [];
 
             $query = $config + [
                     'salesorder_id' => $salesOrderId,
@@ -100,7 +100,7 @@ class ShipmentOrders extends Request
     {
         if (!empty($options) && $shipmentOrderId) {
 
-            $config = $this->http->getConfig('query');
+            $config = $this->http->getConfig('query') ?? [];
             $query = $config;
 
             $jsonData = json_encode($options, JSON_PRESERVE_ZERO_FRACTION);

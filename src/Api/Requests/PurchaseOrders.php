@@ -71,7 +71,7 @@ class PurchaseOrders extends Request
     {
         if (!empty($options)) {
 
-            $config = $this->http->getConfig('query');
+            $config = $this->http->getConfig('query') ?? [];
 
             // Ignore auto sales order number generation for this Purchase order [bool]
             $query = $config + ['ignore_auto_number_generation' => 'false'];
@@ -108,7 +108,7 @@ class PurchaseOrders extends Request
     {
         if (!empty($options) && $purchaseOrderId) {
 
-            $config = $this->http->getConfig('query');
+            $config = $this->http->getConfig('query') ?? [];
 
             // Ignore auto sales order number generation for this Purchase order [bool]
             $query = $config + ['ignore_auto_number_generation' => 'false'];

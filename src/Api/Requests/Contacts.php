@@ -45,7 +45,7 @@ class Contacts extends Request
      * @return mixed
      */
     public function searchByName($contactName,$options=''){
-        $config = $this->http->getConfig('query');
+        $config = $this->http->getConfig('query') ?? [];
 
         $query = $config + [
               'contact_name_startswith' => $contactName
@@ -63,6 +63,11 @@ class Contacts extends Request
     }
 
 
+    /**
+     * List of All Contacts
+     * @param int $page
+     * @return array
+     */
     public function listAll($page = 1)
     {
         $query = $this->http->getConfig('query') ?? [];
@@ -76,6 +81,37 @@ class Contacts extends Request
         $nextPage = array_key_exists('page_context', $data) && $data['page_context']['has_more_page'];
 
         return $nextPage ? $this->listAll($page + 1) : $this->storage;
+    }
+
+    /**
+     * Create Contact
+     * @param array $options
+     * @param false $autoIncrement
+     * @return mixed
+     * @throws \Exception
+     */
+    public function create(array $options, $autoIncrement = false)
+    {
+        if (!empty($options)) {
+
+            $config = $this->http->getConfig('query') ?? [];
+            // Ignore auto sales order number generation for this sales order [bool]
+            $query = $config ;
+
+            $jsonData = json_encode($options, JSON_PRESERVE_ZERO_FRACTION);
+
+            $formParams = ['JSONString' => $jsonData];
+
+            $response = $this->createBodyRequest($this->http, $this->module, $formParams, $query);
+
+            $data = json_decode($response, true);
+            $data['contact']['response_code'] = $data['code'];
+
+            return $data['contact'];
+        }
+
+        throw new \Exception('Массив не может быть пустым, пожалуйста заполните его');
+
     }
 
 }

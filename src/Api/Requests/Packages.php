@@ -106,7 +106,7 @@ class Packages extends Request
     {
         if (!empty($options)) {
 
-            $config = $this->http->getConfig('query');
+            $config = $this->http->getConfig('query') ?? [];
             $query = $config + [
                     'ignore_auto_number_generation' => 'false',
                     'salesorder_id' => $salesOrderId
